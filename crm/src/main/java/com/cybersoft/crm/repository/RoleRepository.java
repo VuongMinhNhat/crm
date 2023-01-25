@@ -20,13 +20,11 @@ public class RoleRepository {
             String query = "select * from roles";
             PreparedStatement ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
-
             while(rs.next()) {
                 RoleModel role = new RoleModel();
                 role.setId(rs.getInt("id"));
                 role.setName(rs.getString("name"));
                 role.setDescription(rs.getString("description"));
-
                 roles.add(role);
             }
 

@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TaskRepository {
-
     public List<TaskModel> getTasks() {
         List<TaskModel> list = new ArrayList<>();
         try {

@@ -23,25 +23,25 @@ public class CustomFilter implements Filter {
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         if(session.getAttribute("isLogin") != null && !session.getAttribute("isLogin").equals("")){
-            //Đã login
+            // Đã login
             boolean isLogin = (boolean) session.getAttribute("isLogin");
             if(isLogin){
                 //chuyển về page chỉ định
                 if(request.getServletPath().equals("/login")){
-                    //Nếu là trang login
+                    // nếu là trang login
                     response.sendRedirect(request.getContextPath() + "/home");
                 }else{
                     filterChain.doFilter(request,response);
                 }
             }else{
-                //chuyển về page login
+                // chuyển về page login
                 response.sendRedirect(request.getContextPath() + "/login");
             }
         }else{
-            //Chưa login
-            //Chuyển về page login
+            // Chưa login
+            // Chuyển về page login
             if(request.getServletPath().equals("/login")){
-                //Nếu là trang login
+                // Nếu là trang login
                 filterChain.doFilter(request,response);
             }else{
                 response.sendRedirect(request.getContextPath() + "/login");

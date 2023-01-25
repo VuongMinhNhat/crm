@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JobRepository {
-
     public List<JobEntity> getJobs() {
         List<JobEntity> jobs = new ArrayList<>();
         try {
@@ -24,7 +23,6 @@ public class JobRepository {
             String query = "select * from jobs";
             PreparedStatement ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
-
             while(rs.next()) {
                 JobEntity job = new JobEntity();
                 job.setId(rs.getInt("id"));
@@ -33,8 +31,6 @@ public class JobRepository {
                 job.setEndDate(rs.getString("end_date"));
                 jobs.add(job);
             }
-
-
             connection.close();
         } catch (SQLException e) {
             System.out.println("Error get jobs " + e.getMessage());
@@ -158,7 +154,6 @@ public class JobRepository {
             ps.setInt(1, userId);
             ps.setInt(2, jobId);
             ResultSet rs = ps.executeQuery();
-
             while(rs.next()) {
                 TaskEntity task = new TaskEntity();
                 task.setId(rs.getInt("id"));
@@ -169,12 +164,10 @@ public class JobRepository {
                 tasks.add(task);
             }
 
-
             connection.close();
         } catch (SQLException e) {
             System.out.println("Error get tasks by jobId and userId " + e.getMessage());
         }
         return tasks;
     }
-
 }

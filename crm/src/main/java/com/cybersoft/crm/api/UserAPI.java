@@ -19,27 +19,6 @@ public class UserAPI extends HttpServlet {
     private UserService userService = new UserService();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter out = resp.getWriter();
-        resp.setContentType("application/json");
-        resp.setCharacterEncoding("UTF-8");
-
-        int id = Integer.parseInt(req.getParameter("id"));
-        boolean isSuccess = userService.deleteUserById(id);
-
-        ResponseData responseData = new ResponseData();
-        responseData.setStatus(200);
-        responseData.setSuccess(isSuccess);
-        responseData.setDescription(isSuccess ? "Xóa thành công" : "Xóa thất bại");
-
-        Gson gson = new Gson();
-        String json = gson.toJson(responseData);
-
-        out.print(json);
-        out.flush();
-    }
-
-    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
         resp.setContentType("application/json");
@@ -57,7 +36,7 @@ public class UserAPI extends HttpServlet {
                 boolean isSuccessAdd = userService.insertUser(userAdd);
                 responseData.setStatus(200);
                 responseData.setSuccess(isSuccessAdd);
-                responseData.setDescription(isSuccessAdd ? "Thêm thành công" : "Thêm thất bại");
+                responseData.setDescription(isSuccessAdd ? "Successfully added" : "Failed to add");
                 break;
             case "/api/user/update":
                 int id = Integer.parseInt(req.getParameter("id"));
@@ -72,9 +51,29 @@ public class UserAPI extends HttpServlet {
                 boolean isSuccessUpdate = userService.updateUser(userUpdate);
                 responseData.setStatus(200);
                 responseData.setSuccess(isSuccessUpdate);
-                responseData.setDescription(isSuccessUpdate ? "Cập nhật thành công" : "Cập nhật thất bại");
+                responseData.setDescription(isSuccessUpdate ? "Successfully updated" : "Failed to update");
                 break;
         }
+
+        Gson gson = new Gson();
+        String json = gson.toJson(responseData);
+        out.print(json);
+        out.flush();
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter out = resp.getWriter();
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+
+        int id = Integer.parseInt(req.getParameter("id"));
+        boolean isSuccess = userService.deleteUserById(id);
+
+        ResponseData responseData = new ResponseData();
+        responseData.setStatus(200);
+        responseData.setSuccess(isSuccess);
+        responseData.setDescription(isSuccess ? "Xóa thành công" : "Xóa thất bại");
 
         Gson gson = new Gson();
         String json = gson.toJson(responseData);

@@ -19,14 +19,12 @@ public class StatusRepository {
             String query = "select * from status";
             PreparedStatement ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
-
             while(rs.next()) {
                 StatusEntity status = new StatusEntity();
                 status.setId(rs.getInt("id"));
                 status.setName(rs.getString("name"));
                 statuses.add(status);
             }
-
             connection.close();
         } catch (SQLException e) {
             System.out.println("Error get statuses " + e.getMessage());

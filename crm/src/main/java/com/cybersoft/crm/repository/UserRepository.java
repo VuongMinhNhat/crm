@@ -22,7 +22,6 @@ public class UserRepository {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setString(1,email);
             ps.setString(2,password);
-
             ResultSet rs = ps.executeQuery();
 
             while(rs.next()){
@@ -31,10 +30,8 @@ public class UserRepository {
                 user.setEmail(rs.getString("email"));
                 user.setFirstName(rs.getString("firstname"));
                 user.setLastName(rs.getString("lastname"));
-
                 users.add(user);
             }
-
             connection.close();
 
         }catch (Exception e){
@@ -54,7 +51,6 @@ public class UserRepository {
                     "ON u.role_id=r.id;";
             PreparedStatement ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
-
             while(rs.next()) {
                 UserModel user = new UserModel();
                 user.setId(rs.getInt("id"));
@@ -62,10 +58,8 @@ public class UserRepository {
                 user.setFirstName(rs.getString("firstname"));
                 user.setLastName(rs.getString("lastname"));
                 user.setRoleName(rs.getString("name"));
-
                 users.add(user);
             }
-
             connection.close();
         } catch (SQLException e) {
             System.out.println("Error get users " + e.getMessage());
@@ -81,7 +75,6 @@ public class UserRepository {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, id);
             result = ps.executeUpdate();
-
             connection.close();
         } catch (SQLException e) {
             System.out.println("Error delete user " + e.getMessage());
@@ -102,7 +95,6 @@ public class UserRepository {
             ps.setString(4, user.getPassword());
             ps.setInt(5, user.getRoleId());
             result = ps.executeUpdate();
-
             connection.close();
         } catch (SQLException e) {
             System.out.println("Error insert user " + e.getMessage());
@@ -123,7 +115,6 @@ public class UserRepository {
             ps.setString(5, user.getLastName());
             ps.setInt(6, user.getId());
             result = ps.executeUpdate();
-
             connection.close();
         } catch (SQLException e) {
             System.out.println("Error update user " + e.getMessage());
@@ -138,9 +129,7 @@ public class UserRepository {
             Connection connection = MysqlConnection.getConnection();
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1,id);
-
             ResultSet rs = ps.executeQuery();
-
             while(rs.next()){
                 user.setId(rs.getInt("id"));
                 user.setFirstName(rs.getString("firstname"));
@@ -149,7 +138,6 @@ public class UserRepository {
                 user.setPassword(rs.getString("password"));
                 user.setRoleId(rs.getInt("role_id"));
             }
-
             connection.close();
 
         }catch (Exception e){

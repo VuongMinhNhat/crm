@@ -15,4 +15,9 @@ public class JobEntity {
     private String startDate;
     private String endDate;
 
+    public JobEntity(String name, String startDate, String endDate){
+        this.name = name;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 }

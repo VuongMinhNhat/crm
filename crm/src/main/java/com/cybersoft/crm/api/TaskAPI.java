@@ -19,27 +19,6 @@ public class TaskAPI extends HttpServlet {
     private TaskService taskService = new TaskService();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter out = resp.getWriter();
-        resp.setContentType("application/json");
-        resp.setCharacterEncoding("UTF-8");
-
-        int id = Integer.parseInt(req.getParameter("id"));
-        boolean isSuccess = taskService.deleteTaskById(id);
-
-        ResponseData responseData = new ResponseData();
-        responseData.setStatus(200);
-        responseData.setSuccess(isSuccess);
-        responseData.setDescription(isSuccess ? "Xóa thành công" : "Xóa thất bại");
-
-        Gson gson = new Gson();
-        String json = gson.toJson(responseData);
-
-        out.print(json);
-        out.flush();
-    }
-
-    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
         resp.setContentType("application/json");
@@ -57,7 +36,7 @@ public class TaskAPI extends HttpServlet {
                 boolean isSuccessAdd = taskService.insertTask(taskAdd);
                 responseData.setStatus(200);
                 responseData.setSuccess(isSuccessAdd);
-                responseData.setDescription(isSuccessAdd ? "Thêm thành công" : "Thêm thất bại");
+                responseData.setDescription(isSuccessAdd ? "Successfully added" : "Failed to add");
                 break;
             case "/api/task/update":
                 int id = Integer.parseInt(req.getParameter("id"));
@@ -73,9 +52,30 @@ public class TaskAPI extends HttpServlet {
                 boolean isSuccessUpdate = taskService.updateTask(taskUpdate);
                 responseData.setStatus(200);
                 responseData.setSuccess(isSuccessUpdate);
-                responseData.setDescription(isSuccessUpdate ? "Cập nhật thành công" : "Cập nhật thất bại");
+                responseData.setDescription(isSuccessUpdate ? "Successfully updated" : "Failed to update");
                 break;
         }
+
+        Gson gson = new Gson();
+        String json = gson.toJson(responseData);
+
+        out.print(json);
+        out.flush();
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter out = resp.getWriter();
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+
+        int id = Integer.parseInt(req.getParameter("id"));
+        boolean isSuccess = taskService.deleteTaskById(id);
+
+        ResponseData responseData = new ResponseData();
+        responseData.setStatus(200);
+        responseData.setSuccess(isSuccess);
+        responseData.setDescription(isSuccess ? "Successfully deleted" : "Failed to delete");
 
         Gson gson = new Gson();
         String json = gson.toJson(responseData);
