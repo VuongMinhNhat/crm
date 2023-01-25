@@ -3,7 +3,7 @@ package com.cybersoft.crm.config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class MysqlConnectionConfiguration {
+public class MysqlConnection {
     public static Connection getConnection(){
         Connection connection = null;
         try{

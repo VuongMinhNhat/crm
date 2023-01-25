@@ -13,5 +13,4 @@ public class ResponseData {
     private int status;
     private boolean success;
     private Object description;
-
 }

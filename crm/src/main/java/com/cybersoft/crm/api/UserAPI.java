@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "userApi", urlPatterns = {"/api/user/delete","/api/user/add", "/api/user/update"})
-public class UserApi extends HttpServlet {
+public class UserAPI extends HttpServlet {
 
     private UserService userService = new UserService();
 

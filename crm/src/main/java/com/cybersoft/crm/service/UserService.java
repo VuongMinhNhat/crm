@@ -3,14 +3,14 @@ package com.cybersoft.crm.service;
 import com.cybersoft.crm.entity.UserEntity;
 import com.cybersoft.crm.model.UserModel;
 import com.cybersoft.crm.repository.UserRepository;
-import com.cybersoft.crm.utils.DateHelper;
+import com.cybersoft.crm.utils.DateFormat;
 
 import java.util.List;
 
 public class UserService {
 
     private UserRepository userRepository = new UserRepository();
-    private DateHelper dateHelper = new DateHelper();
+    private DateFormat dateFormat = new DateFormat();
 
     public List<UserModel> getAllUsers() {
         return userRepository.getUsers();

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "rolePage",urlPatterns = {"/role", "/role-add", "/role-update"})
-public class RolePage extends HttpServlet {
+public class RolePageController extends HttpServlet {
 
     private RoleService roleService = new RoleService();
 

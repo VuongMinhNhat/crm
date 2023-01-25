@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "userPage", urlPatterns = {"/user", "/user-add", "/user-update", "/user-detail"})
-public class UserPage extends HttpServlet {
+public class UserPageController extends HttpServlet {
 
     private UserService userService = new UserService();
     private RoleService roleService = new RoleService();

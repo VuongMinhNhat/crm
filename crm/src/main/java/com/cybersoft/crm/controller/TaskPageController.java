@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "taskPage", urlPatterns = {"/task", "/task-add", "/task-update"})
-public class TaskPage extends HttpServlet {
+public class TaskPageController extends HttpServlet {
 
     private TaskService taskService = new TaskService();
     private JobService jobService = new JobService();

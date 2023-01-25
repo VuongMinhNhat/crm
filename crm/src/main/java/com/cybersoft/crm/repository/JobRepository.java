@@ -4,7 +4,7 @@ import com.cybersoft.crm.config.MysqlConnection;
 import com.cybersoft.crm.entity.JobEntity;
 import com.cybersoft.crm.entity.TaskEntity;
 import com.cybersoft.crm.entity.UserEntity;
-import com.cybersoft.crm.model.JobDetailsModel;
+import com.cybersoft.crm.model.JobModel;
 import com.cybersoft.crm.model.UserModel;
 import com.cybersoft.crm.service.TaskService;
 
