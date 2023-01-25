@@ -1,2 +1,4 @@
-package com.cybersoft.crm.model;public class RoleModel {
+package com.cybersoft.crm.model;
+
+public class RoleModel {
 }

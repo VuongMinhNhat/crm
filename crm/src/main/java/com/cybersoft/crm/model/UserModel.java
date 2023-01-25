@@ -1,2 +1,4 @@
-package com.cybersoft.crm.model;public class UserModel {
+package com.cybersoft.crm.model;
+
+public class UserModel {
 }
